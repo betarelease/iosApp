@@ -42,10 +42,16 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
         let todo = self.todos[indexPath.row]
         cell.textLabel?.text = todo.title
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var detailsViewController: DetailsViewController = segue.destinationViewController as DetailsViewController
+        var todoIndex = appsTableView!.indexPathForSelectedRow()!.row
+        var selectedTodo = self.todos[todoIndex]
+        detailsViewController.todo = selectedTodo
     }
 }
