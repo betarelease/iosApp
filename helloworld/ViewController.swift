@@ -13,6 +13,7 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     @IBOutlet weak var appsTableView: UITableView!
     var tableData = []
     var api = APIController()
+    let kCellIdentifier = "SearchResultCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,8 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "MyTestCell")
+        
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
         
         let rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
         
@@ -58,5 +60,16 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         cell.detailTextLabel?.text = rowData["position"] as? String
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
+        
+        var name: String = rowData["content"] as String
+        
+        var alert: UIAlertView = UIAlertView()
+        alert.title = name
+        alert.addButtonWithTitle("Ok")
+        alert.show()
     }
 }
