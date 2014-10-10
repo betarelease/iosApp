@@ -15,6 +15,8 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     var api = APIController()
     let kCellIdentifier = "SearchResultCell"
     
+    var todos = [Todo]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.api.delegate = self
@@ -29,47 +31,21 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
     
     func didReceiveAPIResults(results: NSArray) {
         dispatch_async(dispatch_get_main_queue(), {
-            self.tableData = results
+            self.todos = Todo.todosWithJSON(results)
             self.appsTableView!.reloadData()
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count
+        return todos.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
-        
-        let rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
-        
-        cell.textLabel?.text = rowData["content"] as? String
-        
-        // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
-//        let urlString: NSString = rowData["artworkUrl60"] as NSString
-//        let imgURL: NSURL = NSURL(string: urlString)
-        
-        // Download an NSData representation of the image at the URL
-//        let imgData: NSData = NSData(contentsOfURL: imgURL)
-//        cell.imageView?.image = UIImage(data: imgData)
-        
-        // Get the formatted price string for display in the subtitle
-//        let formattedPrice: NSString = rowData["position"] as NSString
-        
-        cell.detailTextLabel?.text = rowData["position"] as? String
-        
+        let todo = self.todos[indexPath.row]
+        cell.textLabel?.text = todo.title
         return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
-        
-        var name: String = rowData["content"] as String
-        
-        var alert: UIAlertView = UIAlertView()
-        alert.title = name
-        alert.addButtonWithTitle("Ok")
-        alert.show()
     }
 }

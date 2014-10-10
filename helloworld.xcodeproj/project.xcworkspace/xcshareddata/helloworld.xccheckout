@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>83703390-FB92-48FF-A2BF-B37B38ED1D72</string>
+	<key>IDESourceControlProjectName</key>
+	<string>helloworld</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>36E3A21BC2EEF1EBD1799F7983CD043E4DF5D30D</key>
+		<string>https://github.com/betarelease/iosApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>helloworld.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>36E3A21BC2EEF1EBD1799F7983CD043E4DF5D30D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/betarelease/iosApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>36E3A21BC2EEF1EBD1799F7983CD043E4DF5D30D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>36E3A21BC2EEF1EBD1799F7983CD043E4DF5D30D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>helloworld</string>
+		</dict>
+	</array>
+</dict>
+</plist>
