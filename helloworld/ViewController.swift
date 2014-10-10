@@ -26,10 +26,9 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         // Dispose of any resources that can be recreated.
     }
     
-    func didReceiveAPIResults(results: NSDictionary) {
-        var resultsArr: NSArray = results["results"] as NSArray
+    func didReceiveAPIResults(results: NSArray) {
         dispatch_async(dispatch_get_main_queue(), {
-            self.tableData = resultsArr
+            self.tableData = results
             self.appsTableView!.reloadData()
         })
     }
@@ -43,20 +42,20 @@ class ViewController: UIViewController,UITableViewDataSource, UITableViewDelegat
         
         let rowData: NSDictionary = self.tableData[indexPath.row] as NSDictionary
         
-        cell.textLabel?.text = rowData["trackName"] as? String
+        cell.textLabel?.text = rowData["content"] as? String
         
         // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
-        let urlString: NSString = rowData["artworkUrl60"] as NSString
-        let imgURL: NSURL = NSURL(string: urlString)
+//        let urlString: NSString = rowData["artworkUrl60"] as NSString
+//        let imgURL: NSURL = NSURL(string: urlString)
         
         // Download an NSData representation of the image at the URL
-        let imgData: NSData = NSData(contentsOfURL: imgURL)
-        cell.imageView?.image = UIImage(data: imgData)
+//        let imgData: NSData = NSData(contentsOfURL: imgURL)
+//        cell.imageView?.image = UIImage(data: imgData)
         
         // Get the formatted price string for display in the subtitle
-        let formattedPrice: NSString = rowData["formattedPrice"] as NSString
+//        let formattedPrice: NSString = rowData["position"] as NSString
         
-        cell.detailTextLabel?.text = formattedPrice
+        cell.detailTextLabel?.text = rowData["position"] as? String
         
         return cell
     }
